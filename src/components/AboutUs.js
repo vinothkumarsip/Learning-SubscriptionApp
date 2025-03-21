@@ -16,7 +16,7 @@ export default function AboutUs() {
         </Col>
 
         <Col md={6}>
-          <h2>About FOODIE</h2>
+          <h2>About Bangalore Bites</h2>
           <p>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris odio diam, gravida sit amet tellus sit amet, sodales blandit purus. Aliquam iaculis lorem ut tempor faucibus. Sed finibus semper faucibus. Cras nec orci vel nibh tempor tempor. In mollis facilisis vulputate. Phasellus aliquet iaculis ante, quis cursus ipsum. Etiam a urna sit amet nisl facilisis rhoncus vitae eu ante. Nam velit purus, ullamcorper eleifend dui vel, rhoncus gravida eros. Vestibulum non lacinia nunc.
           </p>

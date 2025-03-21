@@ -1,0 +1,93 @@
+{
+  "customers": [
+    {
+      "id": 2,
+      "name": "Vinutha",
+      "email": "hello@happyruh.com",
+      "phone": "9380084455",
+      "password": "seek"
+    }
+  ],
+  "food_options": [
+    {
+      "id": "F1",
+      "dish_name": "Chicken noodles",
+      "ingredients": "Lorem ipsum dolor sit amet, conse adipiscing elit.",
+      "sugar_free": "no",
+      "veg_nonveg": "nonveg",
+      "price": "₹140"
+    },
+    {
+      "id": "F2",
+      "dish_name": "Daal Soup",
+      "ingredients": "Lorem ipsum dolor sit amet, conse adipiscing elit.",
+      "sugar_free": "no",
+      "veg_nonveg": "veg",
+      "price": "₹120"
+    },
+    {
+      "id": "F3",
+      "dish_name": "Rice (with paneer masala)",
+      "ingredients": "Lorem ipsum dolor sit amet, conse adipiscing elit.",
+      "sugar_free": "no",
+      "veg_nonveg": "veg",
+      "price": "₹140"
+    },
+    {
+      "id": "F4",
+      "dish_name": "Rice (with butter chicken)",
+      "ingredients": "Lorem ipsum dolor sit amet, conse adipiscing elit.",
+      "sugar_free": "no",
+      "veg_nonveg": "nonveg",
+      "price": "₹160"
+    },
+    {
+      "id": "F5",
+      "dish_name": "Dosa (with butter chicken)",
+      "ingredients": "Lorem ipsum dolor sit amet, conse adipiscing elit.",
+      "sugar_free": "no",
+      "veg_nonveg": "nonveg",
+      "price": "₹180"
+    },
+    {
+      "id": "F6",
+      "dish_name": "Grilled Fish",
+      "ingredients": "Lorem ipsum dolor sit amet, conse adipiscing elit.",
+      "sugar_free": "no",
+      "veg_nonveg": "nonveg",
+      "price": "₹220"
+    },
+    {
+      "id": "F7",
+      "dish_name": "Chicken Salad",
+      "ingredients": "Lorem ipsum dolor sit amet, conse adipiscing elit.",
+      "sugar_free": "yes",
+      "veg_nonveg": "nonveg",
+      "price": "₹170"
+    },
+    {
+      "id": "F8",
+      "dish_name": "Chicken Biriyani",
+      "ingredients": "Lorem ipsum dolor sit amet, conse adipiscing elit.",
+      "sugar_free": "no",
+      "veg_nonveg": "nonveg",
+      "price": "₹250"
+    },
+    {
+      "id": "F9",
+      "dish_name": "Rice (with Fish Gravy)",
+      "ingredients": "Lorem ipsum dolor sit amet, conse adipiscing elit.",
+      "sugar_free": "no",
+      "veg_nonveg": "nonveg",
+      "price": "₹250"
+    },
+    {
+      "id": "F10",
+      "dish_name": "Prawn Fried Rice",
+      "ingredients": "Lorem ipsum dolor sit amet, conse adipiscing elit.",
+      "sugar_free": "no",
+      "veg_nonveg": "nonveg",
+      "price": "₹260"
+    }
+  ]
+}
