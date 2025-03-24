@@ -11,7 +11,7 @@ export default function PrivateHomePage() {
     <div className="private-home">
       <Navbar bg="dark" variant="dark" expand="lg">
         <Container>
-          <Navbar.Brand as={Link} to="/">Bangalore Bites</Navbar.Brand>
+          <Navbar.Brand as={Link} to="/privatehomepage">Bangalore Bites</Navbar.Brand>
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">
             <Nav className="ms-auto">

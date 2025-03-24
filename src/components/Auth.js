@@ -1,7 +1,8 @@
 import React, { useState } from "react";
-import { Container, Card, Tab, Nav, Form, Button } from "react-bootstrap";
-import "./Auth.css"; 
+import { Container, Card, Tab, Nav, Form, Button, Alert } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
+import AuthService from "../services/AuthService"; 
+import "./Auth.css";
 
 const Auth = () => {
   const [activeTab, setActiveTab] = useState("login");
@@ -12,84 +13,70 @@ const Auth = () => {
     password: "",
     confirmPassword: "",
   });
-
-const navigate = useNavigate();
+  const [error, setError] = useState(""); 
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSignup = async (event) => {
-    event.preventDefault();
-  
-    const signupData = {
-      name: formData.name.trim(),
+  const handleLogin = async (e) => {
+    e.preventDefault();
+    setError(""); 
+
+    const userData = {
       email: formData.email.trim(),
-      phone: formData.phone.trim(),
       password: formData.password.trim(),
     };
-  
-    console.log("Sending Data:", signupData); 
-  
+
     try {
-      const response = await fetch("http://localhost:5000/signup", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(signupData),
-      });
-  
-      console.log("Response Status:", response.status);
-  
-      if (!response.ok) {
-        throw new Error(`HTTP Error! Status: ${response.status}`);
-      }
-  
-      const data = await response.json();
-      console.log("Signup Successful:", data);
+      const data = await AuthService.login(userData); 
+      console.log("Login successful!", data);
+      localStorage.setItem("user", JSON.stringify(data.user));
       navigate("/privatehomepage");
     } catch (error) {
-      console.error("Signup Error:", error);
+      console.error("Login Error:", error);
+      setError(error.message || "Invalid email or password");
     }
   };
 
-  const handleLogin = async (e) => {
+  const handleSignup = async (e) => {
     e.preventDefault();
+    setError(""); 
 
-    const userData = { 
-        email: formData.email.trim(), 
-        password: formData.password.trim() 
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailPattern.test(formData.email)) {
+      setError("Please enter a valid email address.");
+      return;
+    }
+
+    const phonePattern = /^[0-9]{10}$/;
+    if (!phonePattern.test(formData.phone)) {
+      setError("Phone number must be exactly 10 digits.");
+      return;
+    }
+
+    if (formData.password !== formData.confirmPassword) {
+      setError("Passwords do not match.");
+      return;
+    }
+
+    const signupData = {
+      name: formData.name.trim(),
+      phone: formData.phone.trim(),
+      email: formData.email.trim(),
+      password: formData.password.trim(),
     };
 
-    console.log("Sending Login Data:", JSON.stringify(userData));
-
     try {
-        const response = await fetch("http://localhost:5000/login", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify(userData),
-        });
-
-        console.log("Response Status:", response.status);
-
-        if (response.ok) {
-            const data = await response.json();
-            console.log("Login successful!", data);
-
-            localStorage.setItem("user", JSON.stringify(data.user));
-
-            navigate("/privatehomepage");
-        } else {
-            const errorData = await response.json();
-            console.error("Login failed!", errorData);
-        }
+      const data = await AuthService.signup(signupData);
+      console.log("Signup successful!", data);
+      navigate("/privatehomepage"); 
     } catch (error) {
-        console.error("Error:", error);
+      console.error("Signup Error:", error);
+      setError(error.message || "Signup failed. Please try again.");
     }
-};
+  };
 
   return (
     <div className="auth-container">
@@ -108,6 +95,7 @@ const navigate = useNavigate();
               {/* LOGIN FORM */}
               <Tab.Pane eventKey="login">
                 <Form onSubmit={handleLogin}>
+                  {error && <Alert variant="danger">{error}</Alert>} 
                   <Form.Group className="mb-3">
                     <Form.Label>Email address</Form.Label>
                     <Form.Control
@@ -139,6 +127,7 @@ const navigate = useNavigate();
               {/* SIGNUP FORM */}
               <Tab.Pane eventKey="signup">
                 <Form onSubmit={handleSignup}>
+                  {error && <Alert variant="danger">{error}</Alert>} 
                   <Form.Group className="mb-3">
                     <Form.Label>Name</Form.Label>
                     <Form.Control
