@@ -7,6 +7,13 @@
     position: relative;
   }
   
+  .button-group {
+    display: flex;
+    gap: 1.5rem;
+    justify-content: center; 
+    margin-top: 2vh; 
+  }
+
   .auth-container::before {
     content: "";
     position: absolute;

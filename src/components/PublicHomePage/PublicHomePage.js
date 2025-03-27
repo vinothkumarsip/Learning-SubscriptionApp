@@ -29,11 +29,18 @@ export default function PublicHomePage() {
               <Card.Text className="mb-4">
                 Delicious meals delivered daily!
               </Card.Text>
-              <Link to="/auth">
-                <Button variant="primary" size="lg" className="signup-btn">
-                  Sign-Up
-                </Button>
-              </Link>
+              <div className="button-group">
+                <Link to="/signup">
+                  <Button variant="primary" size="lg" className="signup-btn">
+                    Sign-Up
+                  </Button>
+                </Link>
+                <Link to="/login">
+                  <Button variant="primary" size="lg" className="login-btn">
+                    Login
+                  </Button>
+                </Link>
+              </div>
             </Card.Body>
           </Card>
         </Container>
