@@ -1,33 +1,38 @@
-const API_URL = "http://localhost:5000";
+import axios from "axios";
+
+const API_URL = "http://localhost:5000/api";
 
 const AuthService = {
+  signup: (customerData) => axios.post(`${API_URL}/signup`, customerData),
 
-  signup: async (signupData) => {
-    const response = await fetch(`${API_URL}/signup`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(signupData),
-    });
+  login: async (credentials) => {
+    try {
+      const response = await axios.post(`${API_URL}/login`, credentials);
+      console.log("Full API Response:", response);
 
-    if (!response.ok) {
-      throw new Error(`Signup failed! Status: ${response.status}`);
+      sessionStorage.setItem("authToken", response.data.token);
+      sessionStorage.setItem("customer", JSON.stringify(response.data.customer));
+
+      return response.data;
+    } catch (error) {
+      console.error("AuthService Login Error:", error);
+      throw error;
     }
-    
-    return response.json();
   },
 
-  login: async (userData) => {
-    const response = await fetch(`${API_URL}/login`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(userData),
-    });
+  checkAuth: () => {
+    const token = sessionStorage.getItem("authToken");
+    return !!token;
+  },
 
-    if (!response.ok) {
-      throw new Error(`Login failed! Status: ${response.status}`);
-    }
+  getUser: () => {
+    const customer = sessionStorage.getItem("customer");
+    return customer ? JSON.parse(customer) : null;
+  },
 
-    return response.json();
+  logout() {
+    sessionStorage.removeItem("authToken"); 
+    sessionStorage.removeItem("customer"); 
   },
 };
 

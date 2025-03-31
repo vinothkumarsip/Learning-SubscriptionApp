@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Container, Card, Form, Button, Alert } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import AuthService from "../../services/AuthService";
@@ -15,40 +15,39 @@ const Signup = () => {
   const [error, setError] = useState("");
   const navigate = useNavigate();
 
+  useEffect(() => {
+    if (sessionStorage.getItem("authToken")) {
+      navigate("/privatehomepage", { replace: true });
+    }
+  }, [navigate]);
+
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
   const handleSignup = async (e) => {
     e.preventDefault();
-    setError("");
-
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
-      setError("Please enter a valid email address.");
-      return;
-    }
-
-    if (!/^[0-9]{10}$/.test(formData.phone)) {
-      setError("Phone number must be exactly 10 digits.");
-      return;
-    }
-
-    if (formData.password !== formData.confirmPassword) {
-      setError("Passwords do not match.");
-      return;
-    }
+    setError(""); // Clear any previous error message
 
     try {
-      await AuthService.signup({
+      // Send data to the backend for processing
+      const response = await AuthService.signup({
         name: formData.name.trim(),
         phone: formData.phone.trim(),
         email: formData.email.trim(),
         password: formData.password.trim(),
       });
-      navigate("/privatehomepage");
+
+      if (response.status === 201) {
+        // If signup is successful, navigate to the private homepage
+        navigate("/privatehomepage");
+        window.history.replaceState(null, "", "/privatehomepage");
+      }
+
     } catch (error) {
+      // Handle errors from the backend
       console.error("Signup Error:", error);
-      setError(error.message || "Signup failed. Please try again.");
+      setError(error.response?.data?.error || "Signup failed. Please try again.");
     }
   };
 
