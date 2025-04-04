@@ -1,35 +1,42 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Container, Card, Form, Button, Alert } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import AuthService from "../../services/AuthService";
-import "./Login.css"
+import "./Login.css";
 
-const Login = () => {
-  const [formData, setFormData] = useState({ email: "", password: "" });
+export default function Login({ setIsAuthenticated }) {
+  const [credentials, setCredentials] = useState({ email: "", password: "" });
   const [error, setError] = useState("");
   const navigate = useNavigate();
 
+  useEffect(() => {
+    if (sessionStorage.getItem("authToken")) {
+      navigate("/privatehomepage", { replace: true }); 
+    }
+  }, [navigate]);
+
   const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+    setCredentials({ ...credentials, [e.target.name]: e.target.value });
   };
 
   const handleLogin = async (e) => {
     e.preventDefault();
-    setError("");
-
     try {
-      const data = await AuthService.login({
-        email: formData.email.trim(),
-        password: formData.password.trim(),
-      });
-      localStorage.setItem("user", JSON.stringify(data.user));
-      navigate("/privatehomepage");
+      await AuthService.login(credentials);
+      sessionStorage.setItem("isAuthenticated", "true"); 
+      setIsAuthenticated(true);
+      navigate("/privatehomepage", { replace: true });
+      window.history.replaceState(null, "", "/privatehomepage");
     } catch (error) {
+      if (error.response) {
+        setError(error.response.data.error);
+      } else {
+        setError("Network error. Please try again later.");
+      }
       console.error("Login Error:", error);
-      setError(error.message || "Invalid email or password");
     }
   };
-
+  
   return (
     <div className="auth-container">
       <Container className="d-flex justify-content-center align-items-center">
@@ -42,7 +49,7 @@ const Login = () => {
                 type="email"
                 name="email"
                 placeholder="Enter email"
-                value={formData.email}
+                value={credentials.email}
                 onChange={handleChange}
                 required
               />
@@ -53,7 +60,7 @@ const Login = () => {
                 type="password"
                 name="password"
                 placeholder="Enter password"
-                value={formData.password}
+                value={credentials.password}
                 onChange={handleChange}
                 required
               />
@@ -66,6 +73,4 @@ const Login = () => {
       </Container>
     </div>
   );
-};
-
-export default Login;
+}

@@ -1,3 +1,5 @@
+import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
@@ -7,6 +9,14 @@ import { Link } from "react-router-dom";
 import "./PublicHomePage.css"; 
 
 export default function PublicHomePage() {
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (sessionStorage.getItem("authToken")) {
+      navigate("/privatehomepage", { replace: true });
+    }
+  }, [navigate]);
+
   return (
     <div className="public-home">
       <Navbar bg="dark" variant="dark" expand="lg">

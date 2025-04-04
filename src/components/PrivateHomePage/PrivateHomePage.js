@@ -1,12 +1,31 @@
+import { useNavigate, Link } from "react-router-dom";
+import AuthService from "../../services/AuthService";
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
-import { Link } from "react-router-dom";
-import "./PrivateHomePage.css"; 
+import { useEffect } from "react";
+import "./PrivateHomePage.css";
 
-export default function PrivateHomePage() {
+export default function PrivateHomePage({ isAuthenticated, setIsAuthenticated }) {
+  const navigate = useNavigate();
+  const user = AuthService.getUser();
+
+  useEffect(() => {
+    if (!sessionStorage.getItem("authToken")) {
+      navigate("/", { replace: true }); 
+    }
+  }, [navigate]);
+
+  const handleLogout = () => {
+    sessionStorage.removeItem("authToken");
+    sessionStorage.removeItem("customer"); 
+    setIsAuthenticated(false);
+    navigate("/", { replace: true });
+    window.history.replaceState(null, "", "/"); 
+  };
+
   return (
     <div className="private-home">
       <Navbar bg="dark" variant="dark" expand="lg">
@@ -17,6 +36,7 @@ export default function PrivateHomePage() {
             <Nav className="ms-auto">
               <Nav.Link as={Link} to="/aboutus">About Us</Nav.Link>
               <Nav.Link as={Link} to="/myaccount">My Account</Nav.Link>
+              <Button onClick={handleLogout}>Logout</Button> 
             </Nav>
           </Navbar.Collapse>
         </Container>
@@ -28,9 +48,9 @@ export default function PrivateHomePage() {
             <Card.Body>
               <Card.Title as="h1">Welcome to Bangalore Bites</Card.Title>
               <Card.Text className="mb-4">
-              Hundreds of flavors under one roof!
+                Hundreds of flavors under one roof!
               </Card.Text>
-              <Link to="/subplan">  
+              <Link to="/subplan">
                 <Button variant="primary" size="lg" className="subs-btn">
                   See Subscription Plans
                 </Button>
