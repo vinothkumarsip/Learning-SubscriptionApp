@@ -1,0 +1,11 @@
+.info{
+    height: 80vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.card {
+    background-color: #f5f5f5;
+  }
+  
