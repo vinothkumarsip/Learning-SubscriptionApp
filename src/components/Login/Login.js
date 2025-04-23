@@ -23,6 +23,7 @@ export default function Login({ setIsAuthenticated }) {
     e.preventDefault();
     try {
       await AuthService.login(credentials);
+      sessionStorage.setItem("userEmail", credentials.email);
       sessionStorage.setItem("isAuthenticated", "true"); 
       setIsAuthenticated(true);
       navigate("/privatehomepage", { replace: true });

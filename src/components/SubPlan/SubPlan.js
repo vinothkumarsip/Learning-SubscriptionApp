@@ -9,7 +9,7 @@ export default function SubPlan() {
       <Row className="justify-content-center">
         {/* Daily Plan */}
         <Col md={4}>
-          <Card className="text-center shadow-sm mb-4">
+          <Card className="text-center shadow-sm mb-3 h-100">
             <Card.Body>
               <Card.Title>Daily Plan</Card.Title>
               <Card.Text>
@@ -24,7 +24,7 @@ export default function SubPlan() {
 
         {/* Monthly Plan */}
         <Col md={4}>
-          <Card className="text-center shadow-sm mb-4">
+          <Card className="text-center shadow-sm mb-3 h-100">
             <Card.Body>
               <Card.Title>Monthly Plan</Card.Title>
               <Card.Text>
@@ -39,7 +39,7 @@ export default function SubPlan() {
 
         {/* Yearly Plan */}
         <Col md={4}>
-          <Card className="text-center shadow-sm mb-4">
+          <Card className="text-center shadow-sm mb-3 h-100">
             <Card.Body>
               <Card.Title>Yearly Plan</Card.Title>
               <Card.Text>

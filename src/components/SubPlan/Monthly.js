@@ -1,29 +1,33 @@
 import React, { useState } from "react";
 import { Container, Card, Form, Button } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
+import { usePlan } from "../Order/PlanContext";
 
 export default function Monthly() {
-  const [days, setDays] = useState(15);
+  const [months, setMonths] = useState(1);
   const [meals, setMeals] = useState({
     breakfast: false,
     lunch: false,
     dinner: false,
   });
 
+  const { setSelectedPlan } = usePlan();
   const navigate = useNavigate();
 
   const handleMealChange = (e) => {
     setMeals({ ...meals, [e.target.name]: e.target.checked });
   };
 
-  const handleDaysChange = (e) => {
-    const value = Math.max(15, parseInt(e.target.value) || 0);
-    setDays(value);
+  const handleMonthsChange = (e) => {
+    const value = Math.max(1, parseInt(e.target.value) || 0);
+    setMonths(value);
   };
 
-  const handleSubmit = () => {
-    console.log("Monthly Plan → Days:", days, "Meals:", meals);
-    navigate(""); 
+  const handleSelectPlan = () => {
+    setSelectedPlan("monthly"); 
+    sessionStorage.setItem("selectedMeals", JSON.stringify(meals));
+    sessionStorage.setItem("monthlyPlanMonths", months);
+    navigate("/order"); 
   };
 
   return (
@@ -31,16 +35,16 @@ export default function Monthly() {
       <Card className="p-4 shadow">
         <Card.Title className="text-center mb-4">Monthly Plan Subscription</Card.Title>
         <Card.Text>
-          This plan is ideal for long-term meal bookings. A minimum of 15 days is required.
+          This plan is ideal for long-term meal bookings. A minimum of 1 month is required.
         </Card.Text>
 
         <Form.Group className="mb-3" controlId="daysInput">
-          <Form.Label><strong>How many days are you subscribing for?</strong></Form.Label>
+          <Form.Label><strong>How many months are you subscribing for?</strong></Form.Label>
           <Form.Control
             type="number"
-            min={15}
-            value={days}
-            onChange={handleDaysChange}
+            min={1}
+            value={months}
+            onChange={handleMonthsChange}
           />
         </Form.Group>
 
@@ -72,7 +76,7 @@ export default function Monthly() {
         <div className="text-center">
           <Button
             variant="primary"
-            onClick={handleSubmit}
+            onClick={handleSelectPlan}
             disabled={!meals.breakfast && !meals.lunch && !meals.dinner}
           >
             Order Now

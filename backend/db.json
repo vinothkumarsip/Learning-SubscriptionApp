@@ -1,93 +1,221 @@
 {
-  "customers": [
-    {
-      "id": 2,
-      "name": "Vinutha",
-      "email": "hello@happyruh.com",
-      "phone": "9380084455",
-      "password": "seek"
-    }
-  ],
+  "customers": [],
   "food_options": [
     {
-      "id": "F1",
-      "dish_name": "Chicken noodles",
-      "ingredients": "Lorem ipsum dolor sit amet, conse adipiscing elit.",
-      "sugar_free": "no",
-      "veg_nonveg": "nonveg",
-      "price": "₹140"
+      "id": "FOOD001",
+      "dish_name": "Chicken Noodles",
+      "ingredients": "Soft noodles tossed with tender chicken, mixed vegetables, and classic Asian sauces.",
+      "sugar_free": "No",
+      "veg_nonveg": "Nonveg",
+      "price": "₹140",
+      "image": "https://www.cubesnjuliennes.com/wp-content/uploads/2020/06/Spicy-Chicken-Hakka-Noodles-Recipe.jpg"
     },
     {
-      "id": "F2",
+      "id": "FOOD002",
       "dish_name": "Daal Soup",
-      "ingredients": "Lorem ipsum dolor sit amet, conse adipiscing elit.",
-      "sugar_free": "no",
-      "veg_nonveg": "veg",
-      "price": "₹120"
+      "ingredients": "A warm and hearty soup made with yellow lentils, mild spices, and a hint of lemon.",
+      "sugar_free": "No",
+      "veg_nonveg": "Veg",
+      "price": "₹120",
+      "image": "https://media.istockphoto.com/id/495455544/photo/red-lentil-indian-soup-with-flat-bread-masoor-dal.jpg?s=612x612&w=0&k=20&c=9fFtTaToOQlA5MksySTcwj1imV-Siz6zSwX4CW1NBQg="
     },
     {
-      "id": "F3",
-      "dish_name": "Rice (with paneer masala)",
-      "ingredients": "Lorem ipsum dolor sit amet, conse adipiscing elit.",
-      "sugar_free": "no",
-      "veg_nonveg": "veg",
-      "price": "₹140"
+      "id": "FOOD003",
+      "dish_name": "Rice with Paneer Masala",
+      "ingredients": "Steamed rice served with spicy and creamy paneer curry made with fresh tomatoes and herbs.",
+      "sugar_free": "No",
+      "veg_nonveg": "Veg",
+      "price": "₹140",
+      "image": "https://i.redd.it/9tnea6wps4971.jpg"
     },
     {
-      "id": "F4",
-      "dish_name": "Rice (with butter chicken)",
-      "ingredients": "Lorem ipsum dolor sit amet, conse adipiscing elit.",
-      "sugar_free": "no",
-      "veg_nonveg": "nonveg",
-      "price": "₹160"
+      "id": "FOOD004",
+      "dish_name": "Rice with Butter Chicken",
+      "ingredients": "Aromatic rice paired with rich, creamy butter chicken cooked in tomato gravy.",
+      "sugar_free": "No",
+      "veg_nonveg": "Nonveg",
+      "price": "₹160",
+      "image": "https://thefoodieglobetrotter.com/wp-content/uploads/2020/05/Takeout-Kit-Indian-Butter-Chicken-Tikka-Masala-Basmati-Rice-Meal-Kit.jpg"
     },
     {
-      "id": "F5",
-      "dish_name": "Dosa (with butter chicken)",
-      "ingredients": "Lorem ipsum dolor sit amet, conse adipiscing elit.",
-      "sugar_free": "no",
-      "veg_nonveg": "nonveg",
-      "price": "₹180"
+      "id": "FOOD005",
+      "dish_name": "Dosa with Butter Chicken",
+      "ingredients": "Crispy dosa served with delicious butter chicken as a fusion twist to a South Indian favourite.",
+      "sugar_free": "No",
+      "veg_nonveg": "Nonveg",
+      "price": "₹180",
+      "image": "https://i.pinimg.com/736x/e9/0c/fd/e90cfdcdac6d30517bf081cf1a90f200.jpg"
     },
     {
-      "id": "F6",
+      "id": "FOOD006",
       "dish_name": "Grilled Fish",
-      "ingredients": "Lorem ipsum dolor sit amet, conse adipiscing elit.",
-      "sugar_free": "no",
-      "veg_nonveg": "nonveg",
-      "price": "₹220"
+      "ingredients": "Fresh fish fillet marinated in herbs and grilled to perfection, served with a side salad.",
+      "sugar_free": "No",
+      "veg_nonveg": "Nonveg",
+      "price": "₹220",
+      "image": "https://media.istockphoto.com/id/504337276/photo/grilled-steaks-salmon.jpg?s=612x612&w=0&k=20&c=Nk7Ftv6R84Q3oVt12FJL-Gky1QTDvDLKEP5NV3SkRkQ="
     },
     {
-      "id": "F7",
+      "id": "FOOD007",
       "dish_name": "Chicken Salad",
-      "ingredients": "Lorem ipsum dolor sit amet, conse adipiscing elit.",
-      "sugar_free": "yes",
-      "veg_nonveg": "nonveg",
-      "price": "₹170"
+      "ingredients": "A healthy mix of grilled chicken, fresh veggies, olive oil, and lemon dressing.",
+      "sugar_free": "Yes",
+      "veg_nonveg": "Nonveg",
+      "price": "₹170",
+      "image": "https://media.istockphoto.com/id/534139231/photo/healthy-grilled-chicken-caesar-salad.jpg?s=612x612&w=0&k=20&c=TR_sE5S5ChmjFywg3dh_J5V_ha-BcwgTU26BvsgbsjY="
     },
     {
-      "id": "F8",
-      "dish_name": "Chicken Biriyani",
-      "ingredients": "Lorem ipsum dolor sit amet, conse adipiscing elit.",
-      "sugar_free": "no",
-      "veg_nonveg": "nonveg",
-      "price": "₹250"
+      "id": "FOOD008",
+      "dish_name": "Chicken Biryani",
+      "ingredients": "Fragrant basmati rice cooked with tender chicken, saffron, and aromatic Indian spices.",
+      "sugar_free": "No",
+      "veg_nonveg": "Nonveg",
+      "price": "₹250",
+      "image": "https://static.vecteezy.com/system/resources/thumbnails/040/703/949/small/ai-generated-royal-feast-master-the-art-of-chicken-biryani-at-home-generative-ai-photo.jpg"
     },
     {
-      "id": "F9",
-      "dish_name": "Rice (with Fish Gravy)",
-      "ingredients": "Lorem ipsum dolor sit amet, conse adipiscing elit.",
-      "sugar_free": "no",
-      "veg_nonveg": "nonveg",
-      "price": "₹250"
+      "id": "FOOD009",
+      "dish_name": "Rice with Fish Gravy",
+      "ingredients": "Steamed rice served with spicy and tangy fish curry made using coastal-style masala.",
+      "sugar_free": "No",
+      "veg_nonveg": "Nonveg",
+      "price": "₹250",
+      "image": "https://indiantastes.in/wp-content/uploads/2022/12/bengali-fish-curry-recipe-1024x1024.png"
     },
     {
-      "id": "F10",
+      "id": "FOOD010",
       "dish_name": "Prawn Fried Rice",
-      "ingredients": "Lorem ipsum dolor sit amet, conse adipiscing elit.",
-      "sugar_free": "no",
-      "veg_nonveg": "nonveg",
-      "price": "₹260"
+      "ingredients": "Stir-fried rice with juicy prawns, egg, vegetables, and Asian sauces.",
+      "sugar_free": "No",
+      "veg_nonveg": "Nonveg",
+      "price": "₹260",
+      "image": "https://media.istockphoto.com/id/1334383289/photo/prawn-or-shrimp-biryani-fish-biryani-spicy-and-delicious-malabar-biryani-pulao-basmati-rice.jpg?s=612x612&w=0&k=20&c=V2JjZeeOlA5apjhBQqtd_UHZScVFZrkWiMMogxQtr70="
+    },
+    {
+      "id": "FOOD011",
+      "dish_name": "Mixed Veg Curry with Rice",
+      "ingredients": "Steamed rice served with seasonal vegetables cooked in spicy Indian curry.",
+      "sugar_free": "Yes",
+      "veg_nonveg": "Veg",
+      "price": "₹130",
+      "image": "https://www.photosandfood.ca/wp-content/uploads/2021/01/VegCurry-DSC06771.jpg"
+    },
+    {
+      "id": "FOOD012",
+      "dish_name": "Tandoori Chicken Wrap",
+      "ingredients": "Smoky tandoori chicken wrapped in soft roti with lettuce, onion, and mint chutney.",
+      "sugar_free": "Yes",
+      "veg_nonveg": "Nonveg",
+      "price": "₹190",
+      "image": "https://img.freepik.com/free-photo/side-view-shawarma-with-fried-potatoes-board-cookware_176474-3215.jpg?semt=ais_country_boost&w=740"
+    },
+    {
+      "id": "FOOD013",
+      "dish_name": "Mushroom Biriyani",
+      "ingredients": "Flavoured basmati rice cooked with mushrooms, herbs, and mild spices.",
+      "sugar_free": "Yes",
+      "veg_nonveg": "Veg",
+      "price": "₹150",
+      "image": "https://gingerskillet.com/wp-content/uploads/2021/03/mushroombiryani_F.jpg"
+    },
+    {
+      "id": "FOOD014",
+      "dish_name": "Rajma Chawal",
+      "ingredients": "North Indian favourite: Rajma curry made with red kidney beans served with rice.",
+      "sugar_free": "Yes",
+      "veg_nonveg": "Veg",
+      "price": "₹140",
+      "image": "https://i.pinimg.com/564x/c4/51/89/c45189825c235214ab860d8ef15dbf02.jpg"
+    },
+    {
+      "id": "FOOD015",
+      "dish_name": "Paneer Wrap",
+      "ingredients": "Spicy paneer tikka cubes rolled in a soft wrap with onion, tomato, and mint mayo.",
+      "sugar_free": "No",
+      "veg_nonveg": "Veg",
+      "price": "₹160",
+      "image": "https://media.istockphoto.com/id/1352474720/photo/fresh-paneer-roll-with-fresh-tomatos-salad-cheese-and-onions-isolated-on-bright-blue.jpg?s=612x612&w=0&k=20&c=QK9_TYlJnJWTIV__nJ0oxik6Mc9q37gKtQCLPrBY514="
+    },
+    {
+      "id": "FOOD016",
+      "dish_name": "Methi Thepla with Curd",
+      "ingredients": "Gujarati spiced flatbreads made with fresh fenugreek leaves served with curd.",
+      "sugar_free": "Yes",
+      "veg_nonveg": "Veg",
+      "price": "₹110",
+      "image": "https://media.istockphoto.com/id/1421273269/photo/a-food-called-methi-paratha-or-methi-thepla-is-an-indian-breakfast-dish-served-with-curd-and.jpg?s=612x612&w=0&k=20&c=Bt6N5kEn7MyzXo59wSx25gl2-2tzceBYtFPbxLdc5OE="
+    },
+    {
+      "id": "FOOD017",
+      "dish_name": "Egg Curry with Rice",
+      "ingredients": "Boiled eggs cooked in spicy curry, served hot with rice.",
+      "sugar_free": "No",
+      "veg_nonveg": "Nonveg",
+      "price": "₹150",
+      "image": "https://cookingtheglobe.com/wp-content/uploads/2021/06/Egg-Curry-Feature.jpg"
+    },
+    {
+      "id": "FOOD018",
+      "dish_name": "Pasta in Tomato Sauce",
+      "ingredients": "Penne pasta cooked in tangy tomato sauce, herbs, and a sprinkle of cheese.",
+      "sugar_free": "No",
+      "veg_nonveg": "Veg",
+      "price": "₹160",
+      "image": "https://vaya.in/recipes/wp-content/uploads/2018/11/Pasta-in-Tomato-Sauce-Red-Pasta.jpg"
+    },
+    {
+      "id": "FOOD019",
+      "dish_name": "Poha",
+      "ingredients": "Lightly spiced flattened rice cooked with onions, peas, and peanuts.",
+      "sugar_free": "Yes",
+      "veg_nonveg": "Veg",
+      "price": "₹90",
+      "image": "https://media.istockphoto.com/id/1093261264/photo/aloo-kanda-poha-or-tarri-pohe-with-spicy-chana-masala-curry-selective-focus.jpg?s=612x612&w=0&k=20&c=Oq1UT3a5sDqj2GMLHTUkdjOai3zcfYWxaSx6J4u_LB8="
+    },
+    {
+      "id": "FOOD020",
+      "dish_name": "Chole Bhature",
+      "ingredients": "Spicy chickpeas served with deep-fried fluffy bhature bread.",
+      "sugar_free": "No",
+      "veg_nonveg": "Veg",
+      "price": "₹180",
+      "image": "https://thumbs.dreamstime.com/b/chole-bhature-dark-background-served-laccha-onions-pickle-buttermilk-restaurant-style-304060489.jpg"
+    },
+    {
+      "id": "FOOD021",
+      "dish_name": "Veg Sandwich",
+      "ingredients": "Whole grain sandwich packed with grilled vegetables, cheese, and herbs.",
+      "sugar_free": "Yes",
+      "veg_nonveg": "Veg",
+      "price": "₹100",
+      "image": "https://static.vecteezy.com/system/resources/thumbnails/044/179/737/small/two-sandwiches-with-a-side-of-salad-and-a-bowl-of-sauce-photo.jpeg"
+    },
+    {
+      "id": "FOOD022",
+      "dish_name": "Fish Curry with Roti",
+      "ingredients": "Coastal-style fish curry served with soft wheat rotis.",
+      "sugar_free": "No",
+      "veg_nonveg": "Nonveg",
+      "price": "₹230",
+      "image": "https://assets.bonappetit.com/photos/6130e44f6fca9ea3bc4a2c8c/1:1/w_991,h_991,c_limit/Fish%20Curry.jpg"
+    },
+    {
+      "id": "FOOD023",
+      "dish_name": "Matar Paneer with Paratha",
+      "ingredients": "Green peas and paneer cubes in tomato gravy, served with hot parathas.",
+      "sugar_free": "No",
+      "veg_nonveg": "Veg",
+      "price": "₹180",
+      "image": "https://images.picxy.com/cache/2020/11/14/52f61f4962c6afa82402db7db2149f7a.jpg"
+    },
+    {
+      "id": "FOOD024",
+      "dish_name": "Oats Upma",
+      "ingredients": "A healthy savoury dish made with oats, veggies, and mild South Indian spices.",
+      "sugar_free": "Yes",
+      "veg_nonveg": "Veg",
+      "price": "₹100",
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQfPYs_dMIc3xAplKSsbJrSL0_FhitEbS2b0Q&s"
     }
   ]
 }

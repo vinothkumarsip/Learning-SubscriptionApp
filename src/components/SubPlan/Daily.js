@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Container, Card, Form, Button } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
+import { usePlan } from "../Order/PlanContext";
 
 export default function Daily() {
   const [days, setDays] = useState(3);
@@ -10,6 +11,7 @@ export default function Daily() {
     dinner: false,
   });
 
+  const { setSelectedPlan } = usePlan();
   const navigate = useNavigate();
 
   const handleMealChange = (e) => {
@@ -21,9 +23,11 @@ export default function Daily() {
     setDays(value);
   };
 
-  const handleSubmit = () => {
-    console.log("Days:", days, "Meals:", meals);
-    navigate(""); 
+  const handleSelectPlan = () => {
+    setSelectedPlan("daily"); 
+    sessionStorage.setItem("selectedMeals", JSON.stringify(meals));
+    sessionStorage.setItem("dailyPlanDays", days);
+    navigate("/order"); 
   };
 
   return (
@@ -72,7 +76,7 @@ export default function Daily() {
         <div className="text-center">
           <Button
             variant="primary"
-            onClick={handleSubmit}
+            onClick={handleSelectPlan}
             disabled={!meals.breakfast && !meals.lunch && !meals.dinner}
           >
             Order Now
