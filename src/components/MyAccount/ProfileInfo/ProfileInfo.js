@@ -1,9 +1,10 @@
 import React from "react";
 import { Container, Card } from "react-bootstrap";
+import { getUserInfo } from "../../../services/getUserInfo"; 
 import "./ProfileInfo.css";
 
 export default function ProfileInfo() {
-  const user = JSON.parse(sessionStorage.getItem("customer"));
+  const user = getUserInfo();
 
   return (
     <div className="info">
