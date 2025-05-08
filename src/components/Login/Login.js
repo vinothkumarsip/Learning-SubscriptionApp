@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Container, Card, Form, Button, Alert } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import AuthService from "../../services/AuthService";
+import axios from "axios";
 import "./Login.css";
 
 export default function Login({ setIsAuthenticated }) {
@@ -11,7 +12,7 @@ export default function Login({ setIsAuthenticated }) {
 
   useEffect(() => {
     if (sessionStorage.getItem("authToken")) {
-      navigate("/privatehomepage", { replace: true }); 
+      navigate("/privatehomepage", { replace: true });
     }
   }, [navigate]);
 
@@ -23,11 +24,23 @@ export default function Login({ setIsAuthenticated }) {
     e.preventDefault();
     try {
       await AuthService.login(credentials);
-      sessionStorage.setItem("userEmail", credentials.email);
-      sessionStorage.setItem("isAuthenticated", "true"); 
-      setIsAuthenticated(true);
-      navigate("/privatehomepage", { replace: true });
-      window.history.replaceState(null, "", "/privatehomepage");
+      
+      const res = await axios.get("http://localhost:5001/customers");
+      const user = res.data.find(
+        (customer) => customer.email === credentials.email
+      );
+
+      if (user) {
+        sessionStorage.setItem("loggedInUser", JSON.stringify(user));
+        sessionStorage.setItem("userEmail", user.email); 
+        sessionStorage.setItem("isAuthenticated", "true");
+        setIsAuthenticated(true);
+
+        navigate("/privatehomepage", { replace: true });
+        window.history.replaceState(null, "", "/privatehomepage");
+      } else {
+        setError("User not found. Please check your credentials.");
+      }
     } catch (error) {
       if (error.response) {
         setError(error.response.data.error);
@@ -37,7 +50,7 @@ export default function Login({ setIsAuthenticated }) {
       console.error("Login Error:", error);
     }
   };
-  
+
   return (
     <div className="auth-container">
       <Container className="d-flex justify-content-center align-items-center">

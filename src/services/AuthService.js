@@ -8,7 +8,6 @@ const AuthService = {
   login: async (credentials) => {
     try {
       const response = await axios.post(`${API_URL}/login`, credentials);
-      console.log("Full API Response:", response);
 
       sessionStorage.setItem("authToken", response.data.token);
       sessionStorage.setItem("customer", JSON.stringify(response.data.customer));

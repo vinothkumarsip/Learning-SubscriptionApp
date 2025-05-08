@@ -10,10 +10,17 @@ import AboutUs from "./components/AboutUS/AboutUs";
 import PrivateHomePage from "./components/PrivateHomePage/PrivateHomePage";
 import MyAccount from "./components/MyAccount/MyAccount";
 import ProfileInfo from "./components/MyAccount/ProfileInfo/ProfileInfo";
+import SubscriptionListPage from "./components/MyAccount/SubscriptionDetails/SubscriptionList";
+import UpcomingSubscription from "./components/MyAccount/SubscriptionDetails/UpcomingSubscription";
+import SubscriptionDetails from "./components/MyAccount/SubscriptionDetails/ViewSubscriptionDetails";
+import CartPage from "./components/MyAccount/Cart/CartPage";
 import SubPlan from "./components/SubPlan/SubPlan";
 import Daily from "./components/SubPlan/Daily";
 import Monthly from "./components/SubPlan/Monthly";
 import Yearly from "./components/SubPlan/Yearly";
+import OrderPage from "./components/Order/OrderPage";
+import ProtectedRoute from "./components/Order/ProtectedRoute";
+import { PlanProvider } from "./components/Order/PlanContext";
 
 import PublicLayout from "./layout/PublicLayout";
 import PrivateLayout from "./layout/PrivateLayout";
@@ -29,59 +36,71 @@ function App() {
   }, []);
 
   return (
-    <Router>
-      <Routes>
+    <PlanProvider>
+      <Router>
+        <Routes>
+          {/* Public Routes - PublicLayout */}
+          <Route element={<PublicLayout />}>
+            <Route
+              path="/"
+              element={
+                isAuthenticated ? <Navigate to="/privatehomepage" replace /> : <PublicHomePage />
+              }
+            />
+            <Route
+              path="/login"
+              element={
+                isAuthenticated ? (
+                  <Navigate to="/privatehomepage" replace />
+                ) : (
+                  <Login setIsAuthenticated={setIsAuthenticated} />
+                )
+              }
+            />
+            <Route
+              path="/signup"
+              element={
+                isAuthenticated ? (
+                  <Navigate to="/privatehomepage" replace />
+                ) : (
+                  <Signup />
+                )
+              }
+            />
+            <Route path="/aboutus" element={<AboutUs />} />
+          </Route>
 
-        {/* Public Routes - PublicLayout */}
-        <Route element={<PublicLayout />}>
+          {/* Private Routes - PrivateLayout */}
           <Route
-            path="/"
-            element={
-              isAuthenticated ? <Navigate to="/privatehomepage" replace /> : <PublicHomePage />
-            }
-          />
-          <Route
-            path="/login"
-            element={
-              isAuthenticated ? (
-                <Navigate to="/privatehomepage" replace />
-              ) : (
-                <Login setIsAuthenticated={setIsAuthenticated} />
-              )
-            }
-          />
-          <Route
-            path="/signup"
-            element={
-              isAuthenticated ? (
-                <Navigate to="/privatehomepage" replace />
-              ) : (
-                <Signup />
-              )
-            }
-          />
-          <Route path="/aboutus" element={<AboutUs />} />
-        </Route>
-
-        {/* Private Routes - PrivateLayout */}
-        <Route element={<PrivateLayout setIsAuthenticated={setIsAuthenticated} />}>
-          <Route
-            path="/privatehomepage"
             element={
               <PrivateRoute isAuthenticated={isAuthenticated}>
-                <PrivateHomePage />
+                <PrivateLayout setIsAuthenticated={setIsAuthenticated} />
               </PrivateRoute>
             }
-          />
-          <Route path="/myaccount" element={<MyAccount />} />
-          <Route path="/myaccount/profile" element={<ProfileInfo />} />
-          <Route path="/subscription" element={<SubPlan />} />
-          <Route path="/subscription/daily" element={<Daily />} />
-          <Route path="/subscription/monthly" element={<Monthly />} />
-          <Route path="/subscription/yearly" element={<Yearly />} />
-        </Route>
-      </Routes>
-    </Router>
+          >
+            <Route path="/privatehomepage" element={<PrivateHomePage />} />
+            <Route path="/myaccount" element={<MyAccount />} />
+            <Route path="/myaccount/profile" element={<ProfileInfo />} />
+            <Route path="/myaccount/mysubscription" element={<SubscriptionListPage />} />
+            <Route path="/subscription/:id/upcoming" element={<UpcomingSubscription />} />
+            <Route path="/subscription/:id/details" element={<SubscriptionDetails />} />
+            <Route path="/myaccount/cart" element={<CartPage />} />
+            <Route path="/subscription" element={<SubPlan />} />
+            <Route path="/subscription/daily" element={<Daily />} />
+            <Route path="/subscription/monthly" element={<Monthly />} />
+            <Route path="/subscription/yearly" element={<Yearly />} />
+            <Route
+              path="/order"
+              element={
+                <ProtectedRoute>
+                  <OrderPage />
+                </ProtectedRoute>
+              }
+            />
+          </Route>
+        </Routes>
+      </Router>
+    </PlanProvider>
   );
 }
 
