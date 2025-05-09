@@ -1,34 +1,42 @@
-.background {
-    background: url("https://cdn.pixabay.com/photo/2021/02/28/09/38/food-6056720_1280.jpg") no-repeat center center;
-    background-size: cover;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
+.private-home .background {
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+              url('/public/food-hero.png') no-repeat center center/cover;
+  height: 90vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
-  .welcome-card {
-    background: rgba(255, 255, 255, 0.9); 
-    border-radius: 15px;
-    max-width: 400px;
-  }
+.welcome-card {
+  background: rgba(255, 255, 255, 0.95);
+  border: none;
+  border-radius: 1.5rem;
+  padding: 2.5rem;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+  max-width: 600px;
+}
 
-  .subs-btn {
-    padding: 12px 30px;
-    font-size: 1.2rem;
-    font-weight: bold;
-    border-radius: 25px;
-    transition: background 0.3s ease-in-out;
-  }
-  
-  .subs-btn:hover {
-    background-color: #ff964f;
-  }
-  
-  .private-home{
-    height: 90vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
+.welcome-card h1 {
+  font-size: 2.75rem;
+  font-weight: 700;
+  color: #2c3e50;
+  margin-bottom: 1rem;
+}
+
+.welcome-card .card-text {
+  font-size: 1.25rem;
+  color: #555;
+}
+
+.subs-btn {
+  background-color: #e67e22;
+  border: none;
+  font-size: 1.1rem;
+  padding: 0.75rem 2rem;
+  border-radius: 2rem;
+  transition: background-color 0.3s ease;
+}
+
+.subs-btn:hover {
+  background-color: #cf711f;
+}
