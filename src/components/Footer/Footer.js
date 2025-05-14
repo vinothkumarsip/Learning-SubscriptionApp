@@ -28,7 +28,7 @@ export default function Footer() {
       </div>
 
       <div className="text-center text-white p-3">
-        © 2025 Bangalore Bites
+        © {new Date().getFullYear()} Bangalore Bites
       </div>
     </footer>
   );

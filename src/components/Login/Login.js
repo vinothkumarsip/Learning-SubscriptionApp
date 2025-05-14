@@ -37,7 +37,6 @@ export default function Login({ setIsAuthenticated }) {
         setIsAuthenticated(true);
 
         navigate("/privatehomepage", { replace: true });
-        window.history.replaceState(null, "", "/privatehomepage");
       } else {
         setError("User not found. Please check your credentials.");
       }
