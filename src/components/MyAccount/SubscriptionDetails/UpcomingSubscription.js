@@ -68,9 +68,9 @@ function UpcomingMeals() {
   const handleSaveEdit = async () => {
     try {
       const res = await axios.get("http://localhost:5001/customers");
-      const customer = res.data.find(c =>
-        c.subscription?.some(s => s.id === id)
-      );
+      const customer = res.data.find(customer =>
+      customer.subscription?.some(subscription => subscription.id === id)
+    );
 
       if (!customer) return;
 
@@ -107,9 +107,9 @@ function UpcomingMeals() {
 
     try {
       const res = await axios.get("http://localhost:5001/customers");
-      const customer = res.data.find(c =>
-        c.subscription?.some(s => s.id === id)
-      );
+      const customer = res.data.find(customer =>
+      customer.subscription?.some(subscription => subscription.id === id)
+    );
 
       if (!customer) return;
 
