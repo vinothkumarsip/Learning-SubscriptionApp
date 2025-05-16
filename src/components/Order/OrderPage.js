@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { useOrderPage } from "../../services/Order/useOrderPage";
 import { confirmOrder } from "../../services/Order/OrderService";
 import { saveCart } from "../../services/Order/CartService";
+import { ORDER_PAGE_LABELS } from "../../constants/orderPageLabels";
 
 export default function OrderPage() {
   const {
@@ -99,10 +100,10 @@ export default function OrderPage() {
         <Col md={4}>
           <Accordion>
             <Accordion.Item eventKey="0">
-              <Accordion.Header>Filter</Accordion.Header>
+              <Accordion.Header>{ORDER_PAGE_LABELS.FILTER}</Accordion.Header>
               <Accordion.Body>
-                <Form.Label className="fw-bold small">Sugar Free</Form.Label>
-                {["All", "Yes", "No"].map((option) => (
+                <Form.Label className="fw-bold small">{ORDER_PAGE_LABELS.SUGAR_FREE}</Form.Label>
+                {[ORDER_PAGE_LABELS.ALL, ORDER_PAGE_LABELS.YES, ORDER_PAGE_LABELS.NO].map((option) => (
                   <Form.Check
                     type="radio"
                     name="sugarFree"
@@ -115,8 +116,8 @@ export default function OrderPage() {
                   />
                 ))}
                 <hr />
-                <Form.Label className="fw-bold small">Type</Form.Label>
-                {["All", "veg", "nonveg"].map((option) => (
+                <Form.Label className="fw-bold small">{ORDER_PAGE_LABELS.TYPE}</Form.Label>
+                {[ORDER_PAGE_LABELS.ALL, ORDER_PAGE_LABELS.VEG, ORDER_PAGE_LABELS.NONVEG].map((option) => (
                   <Form.Check
                     type="radio"
                     name="type"
@@ -131,10 +132,10 @@ export default function OrderPage() {
 
                 <div className="mt-3 d-flex gap-2">
                   <Button size="sm" variant="primary" onClick={applyFilters}>
-                    Apply
+                    {ORDER_PAGE_LABELS.APPLY}
                   </Button>
                   <Button size="sm" variant="outline-secondary" onClick={clearFilters}>
-                    Clear
+                    {ORDER_PAGE_LABELS.CLEAR}
                   </Button>
                 </div>
               </Accordion.Body>
@@ -145,26 +146,34 @@ export default function OrderPage() {
         <Col md={4}>
           <Accordion>
             <Accordion.Item eventKey="0">
-              <Accordion.Header>Payment Method</Accordion.Header>
-              <Accordion.Body>
-                <Form.Check
-                  type="radio"
-                  name="paymentType"
-                  value="cod"
-                  label="Cash on Delivery"
-                  checked={paymentType === "cod"}
-                  onChange={(e) => setPaymentType(e.target.value)}
-                  className="small mb-2"
-                />
-                <Form.Check
-                  type="radio"
-                  name="paymentType"
-                  value="online"
-                  label="Online Payment"
-                  checked={paymentType === "online"}
-                  onChange={(e) => setPaymentType(e.target.value)}
-                  className="small"
-                />
+              <Accordion.Header>{ORDER_PAGE_LABELS.PAYMENT_METHOD}</Accordion.Header>
+              <Accordion.Body> 
+              {(() => {
+                const isCOD = paymentType === "cod";
+                const isOnline = paymentType === "online";
+                return (
+                  <>
+                    <Form.Check
+                      type="radio"
+                      name="paymentType"
+                      value="cod"
+                      label={ORDER_PAGE_LABELS.CASH_ON_DELIVERY}
+                      checked={isCOD}
+                      onChange={(e) => setPaymentType(e.target.value)}
+                      className="small mb-2"
+                    />
+                    <Form.Check
+                      type="radio"
+                      name="paymentType"
+                      value="online"
+                      label={ORDER_PAGE_LABELS.ONLINE_PAYMENT}
+                      checked={isOnline}
+                      onChange={(e) => setPaymentType(e.target.value)}
+                      className="small"
+                    />
+                  </>
+                );
+              })()}
               </Accordion.Body>
             </Accordion.Item>
           </Accordion>
@@ -173,26 +182,34 @@ export default function OrderPage() {
         <Col md={4}>
           <Accordion>
             <Accordion.Item eventKey="0">
-              <Accordion.Header>Delivery</Accordion.Header>
+              <Accordion.Header>{ORDER_PAGE_LABELS.DELIVERY}</Accordion.Header>
               <Accordion.Body>
-                <Form.Check
-                  type="radio"
-                  name="deliveryType"
-                  value="home"
-                  label="Home Delivery"
-                  checked={deliveryType === "home"}
-                  onChange={(e) => setDeliveryType(e.target.value)}
-                  className="small mb-2"
-                />
-                <Form.Check
-                  type="radio"
-                  name="deliveryType"
-                  value="pickup"
-                  label="Pickup from Store"
-                  checked={deliveryType === "pickup"}
-                  onChange={(e) => setDeliveryType(e.target.value)}
-                  className="small"
-                />
+                {(() => {
+                  const isHome = deliveryType === "home";
+                  const isPickup = deliveryType === "pickup";
+                  return (
+                    <>
+                      <Form.Check
+                        type="radio"
+                        name="deliveryType"
+                        value="home"
+                        label={ORDER_PAGE_LABELS.HOME_DELIVERY}
+                        checked={isHome}
+                        onChange={(e) => setDeliveryType(e.target.value)}
+                        className="small mb-2"
+                      />
+                      <Form.Check
+                        type="radio"
+                        name="deliveryType"
+                        value="pickup"
+                        label={ORDER_PAGE_LABELS.PICKUP_FROM_STORE}
+                        checked={isPickup}
+                        onChange={(e) => setDeliveryType(e.target.value)}
+                        className="small"
+                      />
+                    </>
+                  );
+                })()}
               </Accordion.Body>
             </Accordion.Item>
           </Accordion>
@@ -210,10 +227,10 @@ export default function OrderPage() {
               <Card.Body className="d-flex flex-column justify-content-between">
                 <Row className="h-100">
                   <Col xs={12} md={7} className="d-flex flex-column justify-content-center">
-                    <Card.Text><strong>Ingredients:</strong> {food.ingredients}</Card.Text>
-                    <Card.Text><strong>Type:</strong> {food.veg_nonveg}</Card.Text>
-                    <Card.Text><strong>Sugar Free:</strong> {food.sugar_free}</Card.Text>
-                    <Card.Text><strong>Price:</strong> {food.price}</Card.Text>
+                    <Card.Text><strong>{ ORDER_PAGE_LABELS.INGREDIENTS }:</strong> {food.ingredients}</Card.Text>
+                    <Card.Text><strong>{ ORDER_PAGE_LABELS.FOOD_TYPE }:</strong> {food.veg_nonveg}</Card.Text>
+                    <Card.Text><strong>{ ORDER_PAGE_LABELS.SUGAR_FREE_LABEL }:</strong> {food.sugar_free}</Card.Text>
+                    <Card.Text><strong>{ ORDER_PAGE_LABELS.PRICE }:</strong> {food.price}</Card.Text>
                   </Col>
 
                   <Col
@@ -246,7 +263,7 @@ export default function OrderPage() {
                     checked={cart.includes(food)}
                   />
                   <label htmlFor={`checkbox-${food.id}`} className="mb-0">
-                    Add to Cart
+                    {ORDER_PAGE_LABELS.ADD_TO_CART}
                   </label>
                 </div>
               </Card.Footer>
@@ -258,7 +275,7 @@ export default function OrderPage() {
       {cart.length > 0 && (
         <div className="text-center mt-4">
           <Button variant="success" onClick={handleSaveCart}>
-            Proceed to Checkout ({cart.length} items) —{" "}
+            {ORDER_PAGE_LABELS.PROCEED_TO_CHECKOUT} ({cart.length} items) —{" "}
             {paymentType === "cod" ? "COD" : "Online"}
           </Button>
         </div>
@@ -266,11 +283,11 @@ export default function OrderPage() {
 
       <Modal show={showModal} onHide={() => setShowModal(false)} size="lg" centered>
         <Modal.Header closeButton>
-          <Modal.Title>Selected Food Items</Modal.Title>
+          <Modal.Title>{ORDER_PAGE_LABELS.SELECTED_FOOD_ITEMS}</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <p><strong>Subscription Duration:</strong> {startDate} to {endDate}</p>
-          <p><strong>Selected Items:</strong></p>
+          <p><strong>{ORDER_PAGE_LABELS.SUBSCRIPTION_DURATION}:</strong> {startDate} to {endDate}</p>
+          <p><strong>{ORDER_PAGE_LABELS.SELECTED_ITEMS}:</strong></p>
           <ul>
             {cart.map((food, index) => (
               <li key={index}>
@@ -281,10 +298,10 @@ export default function OrderPage() {
         </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={() => setShowModal(false)}>
-            Close
+            {ORDER_PAGE_LABELS.CLOSE}
           </Button>
           <Button variant="primary" onClick={handleConfirmOrder}>
-            Confirm Order
+            {ORDER_PAGE_LABELS.CONFIRM_ORDER}
           </Button>
         </Modal.Footer>
       </Modal>
