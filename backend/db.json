@@ -1,5 +1,46 @@
 {
-  "customers": [],
+  "customers": [
+    {
+      "id": "1",
+      "name": "Ashley",
+      "email": "yayyay@gmail.com",
+      "phone": "9999999999",
+      "password": "aaaaaa",
+      "cart": null,
+      "subscription": [
+        {
+          "id": "f35ed8e1-cb3d-41c2-a59e-28223bfec1d8",
+          "type": "daily",
+          "start_date": "2025-05-09",
+          "end_date": "2025-05-12",
+          "subscription_days": 3,
+          "meal_type": [
+            "lunch"
+          ],
+          "food_options_id": [
+            "FOOD023",
+            "FOOD024"
+          ],
+          "payment_type": "COD",
+          "delivery_type": "HOME",
+          "daily_meal_plan": [
+            {
+              "day": "2025-05-09",
+              "lunch": "FOOD024"
+            },
+            {
+              "day": "2025-05-10",
+              "lunch": "FOOD023"
+            },
+            {
+              "day": "2025-05-11",
+              "lunch": "FOOD024"
+            }
+          ]
+        }
+      ]
+    }
+  ],
   "food_options": [
     {
       "id": "FOOD001",

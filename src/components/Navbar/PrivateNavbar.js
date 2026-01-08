@@ -25,7 +25,7 @@ export default function PrivateNavbar({ setIsAuthenticated }) {
             <Nav className="ms-auto">
               <Nav.Link as={Link} to="/aboutus">About Us</Nav.Link>
               <Nav.Link as={Link} to="/myaccount">My Account</Nav.Link>
-              <Button onClick={handleLogout}>Logout</Button> 
+              <Button className="logout-btn" onClick={handleLogout}>Logout</Button> 
             </Nav>
           </Navbar.Collapse>
         </Container>
